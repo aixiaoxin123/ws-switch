@@ -1,0 +1,56 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract version
+        id: version
+        run: echo "VERSION=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "WS Switch ${{ steps.version.outputs.VERSION }}"
+          draft: false
+          prerelease: false
+          generate_release_notes: false
+          body: |
+            ## ⚡ WS Switch ${{ steps.version.outputs.VERSION }}
+
+            > Windsurf 多账号快速切换工具
+
+            ### 📥 下载
+
+            点击下方 **Assets** 中的 `ws-switch.exe` 下载，双击即可运行，**无需安装**。
+
+            ### 系统要求
+
+            - Windows 10 / 11
+            - 已安装 [Windsurf](https://windsurf.com)
+
+            ### 主要功能
+
+            - 管理多个 Windsurf 账号（添加 / 删除 / 批量导入）
+            - 一键切换账号，自动重启 Windsurf
+            - 实时获取账号的 Firebase Token
+            - 查看各账号的套餐、日配额、周配额余额
+
+            ### 使用教程
+
+            详见 [docs/使用教程.md](https://github.com/aixiaoxin123/ws-switch/blob/main/docs/使用教程.md)
+
+            ---
+
+            > ⚠️ 本工具仅供个人学习使用
