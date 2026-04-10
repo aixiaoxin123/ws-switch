@@ -25,6 +25,8 @@
 
 <img src="docs/image/qq.jpg" width="220" alt="QQ群二维码"/>
 
+> 也可添加作者微信：`aixiaoxin123123`，备注「ws-switch」拉你进群。
+
 ---
 
 ## 一、软件简介
